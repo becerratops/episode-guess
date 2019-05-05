@@ -1,56 +1,79 @@
 # Rick and Morty episode guessing game
+# Author: Adam Becerra
+
 import random
 maxNum = 31
-rickNum = random.randint(1, maxNum)
+minNum = 1
+# Rick's episode
+rickNum = random.randint(minNum, maxNum) 
 
-print('Hey Morty!')
-print('*burrp*')
-print('Heyy Morrrtyyyy!')
+print()
+print('Hey Morty! *burrrrrp* Heyy Morrrtyyyy!')
 print('I-I\'m thinking of an episode Morty, try and guess it!')
+print('DEBUG: Rick chose episode ' + str(rickNum))
+print()
 
-# Change input into an integer
-firstGuess = int(input())
+# Take input, convert into an integer
+firstGuess = int(input('Guess a number: '))
+print()
 
-# If input is in between first and latest episode enter here
-if firstGuess > 0 and firstGuess <= maxNum:
-    # Hole in one
-    if firstGuess == rickNum:
-        print('What the fuck...nice guess Morty!')
-        print('You guessed it Morty, we\'re watching episode ' + str(rickNum) + '!')
-        exit()
-    # Keep swinging
-    else:    
-        print('Close but no cigar Mortyy, there\'re only ' + str(maxNum) + ' episodes')
-        if firstGuess > rickNum:
-            print('Take it down a notch buddy, that was too high!')
-        else:
-            print('Lol gotta get it up buddy, too low!')
-# Condition for negative input
+# Hole in One
+if firstGuess == rickNum:
+    print('What the fuck...nice guess Morty! That\'s like a 0.032% chance')
+    print('I can\'t believe you fuckin\' guessed it Morty, we\'re watching episode ' + str(rickNum) + '!')
+    exit()
+# Guess is a possible episode
+elif firstGuess >= minNum and firstGuess <= maxNum:
+    # hint at parameters
+    print('Close but no cigar Mortyy, there\'re only ' + str(maxNum) + ' episodes') 
+    if firstGuess > rickNum:
+        print('Take it down a notch buddy, that was too high!')
+    else:
+        print('Lol gotta get it up buddy, too low!')
+# Guess too large
+elif firstGuess > maxNum:
+    print('Wrong! Haha, *burrp* there\'s only ' + str(maxNum) + ' epsidodes, dumbass')
+# Guess is negative
 elif firstGuess < 0:
     print('Way to waste a guess on a NEGATIVE number Morty, hats...hats off to you')
-# Condition for input larger than latest episode number
+# Guess is 0
 else:
-    print('Wrong! Haha, *burrp* there\'s only ' + str(maxNum) + ' epsidodes dumbass')
+    print('It\'s not 0 you fucking loser...')
 
-# Gives morty 5 guesses, starting at guess 2 (counts the first guess above)
-for guessNumber in range(2, 8):  
+# Give morty 5 guesses (starts at 2, counts firstGuess)
+for guessesTaken in range(2, 6):    
     print('*burrrp* guess again Moertyy')
-    guess = int(input())
+    #print('DEBUG: Rick chose episode ' + str(rickNum))
+    print()
+    guess = int(input('Guess a number: '))
+    print()
     try:
-        if guess < rickNum:
-            print('Tooo looowww brooo')
-        elif guess > rickNum:
-            print('Little too high Mortyy, just like grandpa!')
+        if guess == rickNum:
+            break 
+        elif guess >= minNum and guess <= maxNum:
+            if guess > rickNum:
+                print('Little too high Mortyy, just like grandpa!')
+            elif guess < rickNum:
+                print('Tooo looowww brooo...')
+        elif guess > maxNum:
+            print('I just said there\'re only ' + str(maxNum) + ' episodes...you deserve to lose')
+        elif guess < 0:
+            print('I\'m not asking you about your IQ Morty, pick a positive number...')
         else:
-            break
+            print('Nice, wasting a precious guess on a goose egg, real smooth...')
     except ValueError:
         print('Yeah, that\'s not a number, guess again you little turd...')
 
-# Condition for correct guess in guesses 2-5
 if guess == rickNum:
     print('You guessed it Morty, we\'re watching episode ' + str(rickNum) + '!')
-    print(str(guessNumber) + ' guesses, not bad Morty!')
-# Condition for an idiot Morty
+    if guessesTaken == 5: # condition for last minute win
+        print('On the last guess too, close one! I was about to verbally abuse the \n' +
+              'shit out of you if you didn\'t guess that haha')
+        print()
+    else:
+        print(str(guessesTaken) + ' guesses, not bad Morty!')
+        print()
 else:
-    print('Your feeble capacity to guess an episode from a finite number set')
-    print('is making me sober Morty! The episode was number ' + str(rickNum) + '!')
+    print('Your feeble capacity to guess an episode from a finite number set \n' +
+          'is making me SOBER, Morty! I was thinking of episode ' + str(rickNum) + '...')
+    print()
