@@ -10,7 +10,7 @@ rickNum = random.randint(minNum, maxNum)
 print()
 print('Hey Morty! *burrrrrp* Heyy Morrrtyyyy!')
 print('I-I\'m thinking of an episode Morty, try and guess it!')
-print('DEBUG: Rick chose episode ' + str(rickNum))
+# print('DEBUG: Rick chose episode ' + str(rickNum))
 print()
 
 # Take input, convert into an integer
@@ -43,7 +43,7 @@ else:
 # Give morty 5 guesses (starts at 2, counts firstGuess)
 for guessesTaken in range(2, 6):    
     print('*burrrp* guess again Moertyy')
-    #print('DEBUG: Rick chose episode ' + str(rickNum))
+    # print('DEBUG: Rick chose episode ' + str(rickNum))
     print()
     guess = int(input('Guess a number: '))
     print()
