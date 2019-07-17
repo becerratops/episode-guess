@@ -39,7 +39,7 @@ elif firstGuess < 0:
 else:
     print('It\'s not 0 you fucking loser...')
 
-# Give morty 5 guesses (starts at 2, counts firstGuess)
+# Give morty 5 guesses (count is now 2, counting the first guess)
 for guessesTaken in range(2, 6):    
     print('*burrrp* guess again Moertyy')
     # print('DEBUG: Rick chose episode ' + str(rickNum))
