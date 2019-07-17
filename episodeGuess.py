@@ -7,8 +7,7 @@ minNum = 1
 # Rick's episode
 rickNum = random.randint(minNum, maxNum) 
 
-print()
-print('Hey Morty! *burrrrrp* Heyy Morrrtyyyy!')
+print('\nHey Morty! *burrrrrp* Heyy Morrrtyyyy!')
 print('I-I\'m thinking of an episode Morty, try and guess it!')
 # print('DEBUG: Rick chose episode ' + str(rickNum))
 print()
