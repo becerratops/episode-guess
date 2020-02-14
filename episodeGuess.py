@@ -2,7 +2,7 @@
 # Author: Adam Becerra
 
 import random
-maxNum = 31
+maxNum = 36
 minNum = 1
 # Rick's episode
 rickNum = random.randint(minNum, maxNum) 
